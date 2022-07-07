@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar >
+    
+    <ion-title>Tipos de usuarios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <form [formGroup]="form">
+    <!--   <ion-title> REGISTRAR</ion-title> -->
+      <ion-item>
+        <ion-item lines="none">
+          <ion-label  position="floating">Tipos de usuario</ion-label>
+          <ion-input formControlName="type_user"></ion-input>
+        </ion-item>
+        <ion-icon (click)="register_types()" color="danger" slot="end" name="save-outline"></ion-icon>
+      </ion-item>
+    </form>
+  </ion-item>
+
+
+  <ion-list #list *ngFor="let type of getTypeUser">
+    <ion-item-sliding lines="none">
+      <ion-item>
+        <ion-icon  name="caret-forward-outline">
+          <ion-label>{{type.type_user}}</ion-label>
+        </ion-icon>
+        <ion-label>{{type.type_user}}
+          <ion-label *ngIf="type.state==true" >Activo
+          </ion-label>
+          <ion-label *ngIf="type.state==false" >Inactivo</ion-label>
+        </ion-label>
+
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option >
+          <ion-icon (click)="eliminar(type.id)" name="trash-outline"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="medium">
+          <ion-icon (click)="BuscarTipo(type.id)" name="create-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

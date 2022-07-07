@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div class="d-flex justify-content-start align-items-center">
+      <ion-card-title class="mx-3">Instituciones</ion-card-title>
+      <ion-img  class="img-fluid" src="../../../assets/imagenes/Ecuador.png"></ion-img>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <!-- form register of institutions -->
+  <form [formGroup]="form" (ngSubmit)="_register()" novalidate >
+    <ion-list class="ion-margin border rounded">
+      <div class="form-group">
+        <div class="form-grop-content">
+          <ion-item class="ion-margin">
+            <ion-label position="floating" class="bg-label">Nombre de la institución</ion-label>
+            <ion-input formControlName="name" type="text"></ion-input>
+          </ion-item>
+          <ion-item class="ion-margin">
+            <ion-label position="floating" class="bg-label">Presidente</ion-label>
+            <ion-input formControlName="president" type="text"></ion-input>
+          </ion-item>
+        </div>
+      </div>
+      <ion-item lines="none" class="ion-margin">
+        <div class="mx-auto d-flex justify-content-center align-items-center">
+          <label  (click)="imageInput.click()" class="bg-label efectClick">Logo</label>
+          <input class="d-none" formControlName="logo" #imageInput type="file" (change)="_getFile($event)">
+          <ion-img class="ion-margin efectClick" style="border-radius: 50px; max-width:5rem; max-height: 5rem; overflow: hidden;"
+            [src]="fileSelect|| '../../../assets/imagenes/no-image.png'" (click)="imageInput.click()"></ion-img>
+        </div>
+      </ion-item>
+     <div class="mt-3 col d-flex justify-content-center align-items-center">
+      <button class="efectClick btn btn-primary w-75  mb-5 d-flex justify-content-center my-auto " type="submit" expand="full" color="primary">
+        Guardar
+        <ion-icon class="mx-2" style="zoom: 1.5;" name="save-outline"></ion-icon>
+      </button>
+     </div>
+    </ion-list>
+  </form>
+
+
+  <ion-list *ngIf="isValid" class="ion-margin">
+    <ion-item lines="none">
+      <ion-item lines="none" class="mx-4"></ion-item>
+      <ion-label>Institución</ion-label>
+      <ion-label>Presidente</ion-label>
+    </ion-item>
+   </ion-list>
+
+  <!-- list of institution -->
+  <ion-list *ngIf="isValid" class="ion-margin border rounded"  #list >
+    <ion-item-sliding lines="none" *ngFor="let i of institutions">
+      <ion-item lines="none">
+        <ion-item lines="none">
+          <ion-avatar class="logo">
+            <input class="d-none" #imageInputUpdate type="file" (change)="updateLogo(i.id, $event)">
+            <ion-img style="border-radius: 50px; max-width:5rem; max-height: 5rem; overflow: hidden;"
+            [src]="'http://127.0.0.1:8000/storage/images/institutions/'+i.logo"></ion-img>
+          </ion-avatar>
+        </ion-item>
+        <ion-label>{{i.name}}</ion-label>
+        <ion-label>{{i.president}}</ion-label>
+      </ion-item>
+   
+      <ion-item-options side="end">
+        <ion-item-option (click)="deleteOk(i.id)" color="danger">
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-item-option>
+        <ion-item-option (click)="_showIntitution(i.id)">
+          <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+        </ion-item-option>
+
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

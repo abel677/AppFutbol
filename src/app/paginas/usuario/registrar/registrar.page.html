@@ -1,0 +1,52 @@
+
+<ion-header class="ion-text-center ion-no-border  ">
+  <ion-toolbar class=" ion-no-border ">
+    <ion-buttons routerLink="/login" slot="start">
+      <ion-icon  slot="icon-only" name="arrow-back-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+  <img  width="80%" height="80%" src="./../../../../assets/imagenes/Missed chances-bro (1).png" alt="">
+</ion-header>
+<ion-content class=" ion-no-padding">
+      <h1 style="margin-left: 10px;">
+        <ion-label color="danger" >
+          Registrarse
+        </ion-label>
+        <div>
+          <ion-label style="font-size: 16px; color:rgb(0, 0, 0)">Únete a nosotros  GoolApp</ion-label>
+        </div>
+      </h1>
+      <form [formGroup]="registerForm" (ngSubmit)="submitForm()" novalidate>
+        <ion-item>
+          <ion-input formControlName="usuario" type="text" placeholder="usuario"></ion-input>
+        </ion-item>
+        <span  class="ion-padding" *ngIf="isSubmitted && errorControl.usuario.errors?.required">
+         <ion-label color="danger" style="font-size: 10px; ">
+          El usuario es requerido
+         </ion-label>
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.usuario.errors?.minlength">
+          <ion-label color="danger" style="font-size: 10px; "> Minímo 5 caracteres </ion-label>
+        </span>
+        <ion-item >
+          <ion-input formControlName="password" type="password" placeholder="contraseña"></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
+          <ion-label color="danger" style="font-size: 10px; "> La contraseña es requerida</ion-label>
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.minlength">
+          <ion-label color="danger" style="font-size: 10px; "> Minímo 8 caracteres </ion-label>
+        </span>
+        <ion-item>
+          <ion-input formControlName="email" type="text"  placeholder="correo"></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.required">
+          <ion-label color="danger" style="font-size: 10px; "> El correo es requerido</ion-label>
+        </span>
+        <!-- <ion-select #typeUser_id style="text-align: left; width: 100%; font-family:roboto; ">
+                  <ion-select-option  *ngFor="let tipo of tipos" value="{{tipo.id}}">{{tipo.type_user}} </ion-select-option>
+        </ion-select> -->
+          <ion-button type="submit" expand="full" color="danger" >Registrarse</ion-button>
+      </form>
+        <p class="message" style="color:#000; text-align: center;margin-top: 10px;;">Estás registrado?<ion-label routerLink="/login" color="danger"> Iniciar sesión</ion-label></p>
+</ion-content>

@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title ><b>Editar tipo de usuario</b></ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" (ngSubmit)="edit()">
+    <ion-list>
+      <ion-item lines="none">
+        <ion-label  position="floating">Tipos de usuario</ion-label>
+        <ion-input  formControlName="type_user"></ion-input>
+        <ion-item slot="end">
+          <ion-label>Estado</ion-label>
+          <ion-toggle formControlName="state" color="primary" name="state"></ion-toggle>
+        </ion-item>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-button type="submit" >Actualizar</ion-button>
+      </ion-item>
+
+    </ion-list>
+  </form>
+</ion-content>

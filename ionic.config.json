@@ -1,0 +1,7 @@
+{
+  "name": "WebFutbol",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="d-flex">
+      <ion-title>Editar Equipo</ion-title>
+      <ion-icon (click)="closeModal()" style="zoom:2.0;" class="mx-2" name="close-circle-outline"></ion-icon>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+ <ion-list>
+  <ion-item lines="none">
+    <div class="mx-auto d-flex justify-content-center align-items-center">
+      <label (click)="imageInput.click()" class="bg-label efectClick">Logo</label>
+      <input class="d-none"  #imageInput type="file" (change)="_getFile($event)">
+      <ion-img class="ion-margin efectClick"
+        style="border-radius: 50px; max-width:5rem; max-height: 5rem; overflow: hidden;"
+        [src]="fileSelect||'http://127.0.0.1:8000/storage/images/teams/'+_logo|| '../../../assets/imagenes/no-image.png'" (click)="imageInput.click()"></ion-img>
+    </div>
+  </ion-item>
+ </ion-list>
+
+
+  <form [formGroup]="form" (ngSubmit)="_update()" novalidate>
+    <ion-list class="ion-margin border rounded">
+      <div class="form-group">
+        <div class="form-grop-content">
+          <ion-item class="ion-margin">
+            <ion-label position="floating" class="bg-label">Nombre del equipo</ion-label>
+            <ion-input formControlName="name" type="text"></ion-input>
+          </ion-item>
+          <ion-item class="ion-margin">
+            <ion-label>Seleccione Institución</ion-label>
+            <ion-select formControlName="id_institution">
+              <ion-select-option *ngFor="let i of institutions" [value]="i.id">{{i.name}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </div>
+      </div>
+  
+      <div class="mt-3 col d-flex justify-content-center align-items-center">
+        <button class="efectClick btn btn-primary w-75  mb-5 d-flex justify-content-center my-auto " type="submit"
+          expand="full" color="primary">
+          Guardar
+          <ion-icon class="mx-2" style="zoom: 1.5;" name="save-outline"></ion-icon>
+        </button>
+      </div>
+    </ion-list>
+  </form>
+
+</ion-content>

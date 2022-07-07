@@ -1,0 +1,71 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+*{
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+
+}
+.img-fluid{
+    max-width: 45px;
+    border-radius: 50px;
+    padding: 5px;
+    overflow: hidden;
+ }
+
+.form-grop-content ion-item{
+    padding: 3px;
+}
+.form-grop-content ion-item:hover{
+    border-radius: 5px;
+    box-shadow: 0 0px 10px 0 rgb(6, 89, 255);
+}
+.efectClick{
+    outline: none;
+}
+.efectClick:active{
+    transform: scale(0.9);
+}
+.bg-label{
+    color: rgb(146, 143, 143);
+}
+.my-custom-class{
+    --width:500px;
+    --height:58%;
+    --backdrop-opacity:50%;
+    --border-radius:15px;
+
+}
+@media (max-width: 600px) {
+    .my-custom-class{
+        --width:90%;
+        --height:55%;
+        --backdrop-opacity:50%;
+        --border-radius:15px;
+    }
+}

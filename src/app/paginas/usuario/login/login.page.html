@@ -1,0 +1,29 @@
+<ion-header >
+  
+</ion-header>
+
+<ion-content >
+  <div class="login-page" >
+    <div class="registrar">
+      ESPAM-MFL
+    </div>
+    
+    <div class="form">
+      <img src="./../../../../assets/imagenes/Football Goal-pana.png" alt="">
+      <form class="register-form">
+        <input type="text" placeholder="name"/>
+        <input type="password" placeholder="password"/>
+        <input type="text" placeholder="email address"/>
+        <button>create</button>
+        <p class="message">Already registered? <a routerLink="/login">Sign In</a></p>
+      </form>
+      <form class="login-form">
+        <input class="text-black" type="text" placeholder="username" #em />
+        <input class="text-black" type="password" placeholder="password" #pass/>
+        <input type="submit" style="background-color: red; color: white;"   st value="Login" (click)="login(em,pass)">
+        <p class="message">Not registered? <a routerLink="/registrar">Create an account</a></p>
+      </form>
+          </div>
+  </div>
+
+</ion-content>
